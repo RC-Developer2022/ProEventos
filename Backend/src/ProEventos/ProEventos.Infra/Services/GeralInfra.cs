@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ProEventos.Infra.Context;
 using ProEventos.Infra.Interfaces;
 
@@ -9,6 +10,7 @@ public class GeralInfra : IGeralInfra
     public GeralInfra(ProEventosContext context)
     {
         _context = context;
+        _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;// colocando para todos os métodos
     }
 
     public void Add<T>(T entity) where T : class

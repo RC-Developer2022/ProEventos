@@ -11,6 +11,7 @@ public class PalestranteInfra : IPalestranteInfra
     public PalestranteInfra(ProEventosContext context)
     {
         _context = context;
+        _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;// colocando para todos os métodos
     }
 
     public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos = false)

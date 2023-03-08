@@ -12,6 +12,7 @@ public class EventoInfra : IEventoInfra
     public EventoInfra(ProEventosContext context)
     {
         _context = context;
+        _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;// colocando para todos os métodos
     }
 
     public async Task<Evento> GetEventoByIdAsync(int eventoId, bool includePalestrantes = false)
